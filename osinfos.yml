@@ -1,0 +1,13 @@
+---
+- name: show os from hosts
+  hosts: web_servers
+  become: yes  
+  tasks:
+    - name: show the os
+      ansible.builtin.setup:
+        filter: ansible_distribution*
+      register: system_info
+
+    - name: output from os
+      debug:
+        msg: "The OS on {{ inventory_hostname }} is: {{ system_info.ansible_facts.ansible_distribution }} {{ system_info.ansible_facts.ansible_distribution_version }}"
