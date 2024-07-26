@@ -1,0 +1,9 @@
+---
+- name: Shutdown remote hosts
+  hosts: ubuntu
+  become: yes
+  tasks:
+    - name: Shutdown the system
+      command: shutdown -h now
+      async: 1
+      poll: 0
