@@ -23,7 +23,7 @@
         state: started
         enabled: yes
 
-    - name: Deploy custom index.html
+    - name: Deploy custom index.html from Ansible control node
       copy:
         src: /home/ben/work/index.html
         dest: /var/www/html/index.html
