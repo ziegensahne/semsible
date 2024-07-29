@@ -29,7 +29,7 @@
   tasks:
     - name: Fetch index.html from deb12ui.firenet
       fetch:
-        src: /path/to/index.html
+        src: /home/ben/work/index.html
         dest: /tmp/index.html
         flat: yes
       delegate_to: deb12ui.firenet
