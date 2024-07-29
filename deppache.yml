@@ -23,9 +23,20 @@
         state: started
         enabled: yes
 
-    - name: Deploy custom index.html from Ansible control node
+- name: Fetch and deploy index.html from deb12ui.firenet to target hosts
+  hosts: testian.firenet
+  become: yes
+  tasks:
+    - name: Fetch index.html from deb12ui.firenet
+      fetch:
+        src: /path/to/index.html
+        dest: /tmp/index.html
+        flat: yes
+      delegate_to: deb12ui.firenet
+
+    - name: Deploy custom index.html to Apache webroot
       copy:
-        src: /home/ben/work/index.html
+        src: /tmp/index.html
         dest: /var/www/html/index.html
         owner: www-data
         group: www-data
